@@ -3,20 +3,21 @@ import {products} from '../data/products.js'
 import { formatCurrency } from '../utils/money.js';
 
 let cartSummery = '';
-
 cart.forEach((cartItem) => {
-  const productId = cartItem.productId;
+  const productId = cartItem.productId || cartItem.productid;
 
   let matchingProduct;
-
   products.forEach((product) => {
     if(product.id === productId){
       matchingProduct = product;
+      
     }
   });
 
+
   cartSummery += `
-  <div class="cart-item-container js-cart-item-${matchingProduct.id}">
+  <div class="cart-item-container 
+   js-cart-item-${matchingProduct.id}">
       <div class="delivery-date">
         Delivery date: Tuesday, June 21
       </div>
@@ -92,6 +93,7 @@ cart.forEach((cartItem) => {
       </div>
     </div>
   `;
+
 
 });
 
